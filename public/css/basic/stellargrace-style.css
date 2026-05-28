@@ -1,0 +1,339 @@
+:root {
+    --primary: #0f172a;
+    --gold: #c5a059;
+    --silver: #e2e8f0;
+    --text-lite: #f1f5f9;
+    --glow: rgba(197, 160, 89, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #020617;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    color: var(--text-lite);
+    background-color: var(--primary);
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 100vh;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Playfair Display", serif;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-shadow: 0 0 10px var(--glow);
+}
+
+.cursive {
+    font-family: "Sacramento", cursive;
+    color: var(--silver);
+    font-size: 2.8rem;
+}
+
+.arabic {
+    font-family: "Amiri", serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    direction: rtl;
+    padding: 20px 0;
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* ========== NEW ANIMATIONS (LEFT/RIGHT/FADE) ========== */
+.reveal {
+    opacity: 0;
+    transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal-bottom {
+    transform: translateY(50px);
+}
+
+.reveal-left {
+    transform: translateX(-60px);
+}
+
+.reveal-right {
+    transform: translateX(60px);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* ========== COVER ========== */
+/* ========== COVER ========== */
+#cover {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    background:
+        linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
+        url("/img/template/basic/stellar-grace/bg-hero.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: transform 1s cubic-bezier(0.77, 0, 0.18, 1);
+    padding: 20px;
+    text-align: center;
+}
+
+#cover.hide {
+    transform: translateX(100%); /* ← geser ke kanan (keluar layar) */
+    pointer-events: none;
+}
+
+.btn-open {
+    padding: 12px 35px;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    box-shadow: 0 0 15px var(--glow);
+}
+
+/* ========== COUNTDOWN ========== */
+.timer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.timer-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 5px;
+    border-radius: 8px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.timer-item span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.timer-item small {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========== PHOTO FRAME ========== */
+.photo-stellar {
+    width: 240px;
+    height: 320px;
+    margin: 0 auto 20px;
+    position: relative;
+    border: 1px solid var(--gold);
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.photo-stellar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ========== MASONRY GALLERY ========== */
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.masonry-item {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.masonry-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-large {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+/* ========== RSVP FORM ========== */
+.rsvp-form {
+    text-align: left;
+    margin-top: 30px;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    color: white;
+    border-radius: 5px;
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background: var(--gold);
+    color: var(--primary);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* ========== FOOTER STYLES ========== */
+footer {
+    padding: 100px 20px 60px;
+    text-align: center;
+    background: #020617; /* Navy Gelap */
+    color: var(--text-lite);
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+    position: relative;
+}
+
+footer .thank-you-text {
+    max-width: 400px;
+    margin: 0 auto 40px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    opacity: 0.8;
+}
+
+footer h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin: 10px 0;
+    color: var(--gold);
+}
+
+.back-to-top {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.back-to-top i {
+    font-size: 1.2rem;
+    animation: bounceVertical 2s infinite;
+}
+
+@keyframes bounceVertical {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+footer .footer-tagline {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+/* ========== MUSIC CONTROL ========== */
+.music-control {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-235px);
+    z-index: 1000;
+}
+
+.music-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.music-btn.playing {
+    animation: rotateMusic 3s linear infinite;
+}
+
+@keyframes rotateMusic {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+@media (max-width: 500px) {
+    .music-control {
+        left: 20px;
+        transform: none;
+    }
+}

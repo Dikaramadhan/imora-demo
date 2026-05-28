@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /template/
+
+Disallow: /admin/
+Disallow: /storage/
+Disallow: /*.env
+Disallow: /api/
+
+Sitemap: https://imora.id/sitemap.xml

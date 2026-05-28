@@ -1,0 +1,561 @@
+/* ========== VARIABLES ========== */
+:root {
+    --bg-main: #ffffff;
+    --bg-sub: #f8fafc;
+    --color-primary: #1a202c;
+    --color-silver: #cbd5e0;
+    --color-accent: #e2e8f0;
+    --silver-text: #4a5568;
+}
+
+/* ========== RESET & BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Latar belakang di luar area portrait (Desktop) */
+html {
+    scroll-behavior: smooth;
+    background-color: #e2e8f0;
+    /* Warna di luar bingkai portrait */
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--color-primary);
+    background-color: var(--bg-main);
+    line-height: 1.6;
+
+    /* Membuat efek Portrait di Desktop */
+    max-width: 500px;
+    /* Lebar standar portrait HP */
+    margin: 0 auto;
+    /* Menengahkan body */
+    min-height: 100vh;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    /* Bayangan agar terlihat seperti aplikasi */
+    position: relative;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Cinzel", serif;
+    letter-spacing: 2px;
+}
+
+.cursive {
+    font-family: "Sacramento", cursive;
+    color: var(--silver-text);
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ========== ANIMATIONS ========== */
+.reveal {
+    opacity: 0;
+    transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+
+.reveal-left {
+    transform: translateX(-80px);
+}
+
+.reveal-right {
+    transform: translateX(80px);
+}
+
+.reveal-bottom {
+    transform: translateY(60px);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translate(0, 0);
+    pointer-events: auto;
+}
+
+/* ========== COVER OVERLAY ========== */
+#cover {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    /* Mengikuti ukuran portrait body */
+    height: 100%;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 10000;
+    /* Paling atas */
+    transition:
+        transform 1s cubic-bezier(0.77, 0, 0.175, 1),
+        opacity 1s;
+    text-align: center;
+    padding: 20px;
+}
+
+#cover.hide {
+    transform: translateX(-50%) translateY(-100%);
+    /* Geser ke atas saat dibuka */
+    opacity: 0;
+    pointer-events: none;
+}
+
+#cover h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+
+/* ========== COVER OVERLAY ========== */
+#cover {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    /* Sesuai ukuran Portrait */
+    height: 100%;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("/img/basic-img/silverclass/aura-silver/bg-hero.jpg");
+    background-size: cover;
+    background-position: center;
+
+    /* Inti agar semua konten di dalam cover ke tengah */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Menengah secara Vertikal */
+    align-items: center;
+    /* Menengah secara Horizontal */
+
+    color: white;
+    z-index: 10000;
+    transition:
+        transform 1s cubic-bezier(0.77, 0, 0.175, 1),
+        opacity 1s;
+    text-align: center;
+    padding: 20px;
+}
+
+#cover.hide {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.btn-open {
+    padding: 12px 30px;
+    background: #fff;
+    color: var(--color-primary);
+    border: none;
+    border-radius: 50px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+
+    /* Flex di dalam tombol untuk icon & teks */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin-top: 20px;
+    /* Jarak dari teks di atasnya */
+}
+
+.btn-open:hover {
+    transform: scale(1.05);
+    background: var(--color-silver);
+}
+
+/* Sembunyikan scrollbar saat cover masih ada */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* ========== HERO SECTION ========== */
+.hero-aura {
+    height: 100vh;
+    width: 100%;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("/img/basic-img/silverclass/aura-silver/bg-hero.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.hero-inner h1 {
+    font-size: clamp(2.2rem, 10vw, 4.5rem);
+    margin: 15px 0;
+    letter-spacing: 5px;
+}
+
+/* ========== QUOTE SECTION ========== */
+.quote-bg {
+    background: var(--bg-sub);
+    width: 100%;
+}
+
+.quote-container p {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    font-style: italic;
+    color: var(--silver-text);
+}
+
+/* ========== MEMPELAI SECTION ========== */
+.mempelai-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.photo-frame {
+    width: 260px;
+    height: 360px;
+    position: relative;
+    border: 1px solid var(--color-silver);
+    padding: 10px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin: 0 auto 20px;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-frame::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 30px;
+    height: 30px;
+    border-top: 3px solid var(--color-silver);
+    border-left: 3px solid var(--color-silver);
+}
+
+.photo-frame::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 30px;
+    height: 30px;
+    border-bottom: 3px solid var(--color-silver);
+    border-right: 3px solid var(--color-silver);
+}
+
+.divider-cursive {
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+/* ========== EVENTS SECTION ========== */
+.events-bg {
+    background: var(--bg-sub);
+    width: 100%;
+}
+
+.event-box {
+    background: var(--bg-main);
+    padding: 30px 20px;
+    border-radius: 15px;
+    border: 1px solid var(--color-accent);
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.event-box h3 {
+    margin-bottom: 10px;
+}
+
+.btn-maps {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--color-primary);
+    color: var(--bg-main);
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 0.85rem;
+    transition: opacity 0.3s;
+}
+
+.btn-maps:hover {
+    opacity: 0.8;
+}
+
+/* ========== GALLERY SECTION ========== */
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+    gap: 10px;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.masonry-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-accent);
+    border-radius: 8px;
+}
+
+.masonry-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: all 0.8s;
+    display: block;
+}
+
+.masonry-item:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.item-large,
+.item-wide {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+/* ========== RSVP SECTION ========== */
+.rsvp form {
+    max-width: 500px;
+    margin: 30px auto 0;
+    text-align: left;
+}
+
+.rsvp input,
+.rsvp select,
+.rsvp textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid var(--color-accent);
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: var(--bg-main);
+    text-align: center;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+footer p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    opacity: 0.9;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+footer h2 {
+    margin-top: 30px;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    letter-spacing: 4px;
+    color: var(--color-silver);
+}
+
+footer .cursive {
+    margin-top: 15px;
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    color: var(--color-silver);
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: var(--color-silver);
+}
+
+.footer-credit {
+    margin-top: 40px;
+    font-size: 0.7rem;
+    opacity: 0.5;
+    letter-spacing: 2px;
+}
+
+/* ========== BACK TO TOP STYLES ========== */
+.back-to-top {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    /* Warna Emas Mewah */
+    color: #c5a059;
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+    /* Efek cahaya emas tipis */
+    text-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
+}
+
+.back-to-top:hover {
+    color: #e5c07b;
+    /* Emas yang lebih terang saat di-hover */
+    text-shadow: 0 0 15px rgba(197, 160, 89, 0.8);
+    transform: scale(1.1);
+}
+
+.back-to-top i {
+    font-size: 1.2rem;
+    animation: bounceVertical 2s infinite;
+}
+
+@keyframes bounceVertical {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-8px);
+    }
+
+    60% {
+        transform: translateY(-4px);
+    }
+}
+
+/* ========== MUSIC CONTROL ========== */
+.music-control {
+    position: fixed;
+    bottom: 25px;
+    /* Menghitung posisi agar tetap nempel di dalam body portrait */
+    left: 50%;
+    transform: translateX(-230px);
+    /* 500px / 2 - sedikit margin */
+    z-index: 1000;
+}
+
+.music-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--bg-main);
+    border: 1px solid var(--color-silver);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+
+    /* TAMBAHKAN BARIS DI BAWAH INI */
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    /* Menghilangkan highlight biru di HP Android/iOS */
+    user-select: none;
+    /* Mencegah teks/elemen terpilih secara tidak sengaja */
+}
+
+/* Pastikan saat focus/aktif juga tidak muncul outlinenya */
+.music-btn:focus,
+.music-btn:active {
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Opsional: ganti outline dengan shadow halus */
+}
+
+/* Class ini akan ditambahkan lewat JavaScript saat musik PLAY */
+.music-btn.playing {
+    animation: rotateMusic 3s linear infinite;
+    /* Putar terus menerus */
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* Animasi Rotasi */
+@keyframes rotateMusic {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Penyesuaian untuk layar HP asli agar tidak terlalu ke kiri */
+@media (max-width: 500px) {
+    .music-control {
+        left: 20px;
+        transform: none;
+    }
+}
